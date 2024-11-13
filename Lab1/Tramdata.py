@@ -14,36 +14,28 @@ def build_tram_stops(jsonobject):
 def build_tram_lines(lines):
     with open(lines) as file:
 
-        print(linjer)
+        tram_lines = {}
+        current_line = None
         stops = []
+
         for line in file:
+            line = line.strip()
 
-            lin = (line.split())
-            
-            stop = ' '.join(lin[:-1])
-            #print(stop)
-            
+            if line.endswith(':'):
 
-        
-        #for i in stops:
-           # if i != '':
+                if current_line is not None:
+                    tram_lines[current_line] = stops  
+                current_line = line.strip(':')  
+                stops = []  
 
-        #print(stops)
-                
-        #print(stops)
+            elif line:  
+                stop_name = ' '.join(line.split()[:-1])  
+                stops.append(stop_name)  
 
-        #index = 1
-        #for i in range(9):
-        #    dic = {index: [line for line in file]}
-        #    index += 1
-        #    print(dic)
-#
-        #stops = []
-        #for line in file:
-        #    lin = (line.split())
-        #    
-        #    stop = (' '.join(lin[:-1]))
-            
-    #print(stops)
+        if current_line is not None:
+            tram_lines[current_line] = stops
+
+        print(tram_lines)
+
 
 build_tram_lines(lines)
