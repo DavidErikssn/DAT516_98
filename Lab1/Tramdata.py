@@ -6,10 +6,13 @@ lines = 'tramlines.txt'
 def build_tram_stops(jsonobject):
     with open(jsonobject) as file:
         data = json.load(file)
-        
+        tstops = {}
         for key, value in data.items():
-            tramstops = {key: {'lat': value['position'][0], 'lon': value['position'][1]}}
-            return tramstops
+            tstops[key] = {'lat': value['position'][0], 'lon': value['position'][1]}
+            #tramstops = key, {'lat': value['position'][0], 'lon': value['position'][1]}
+        return tstops
+        
+print(build_tram_stops(jsonobject))
             
 def build_tram_lines(lines):
     with open(lines) as file:
@@ -38,4 +41,4 @@ def build_tram_lines(lines):
         print(tram_lines)
 
 
-build_tram_lines(lines)
+#build_tram_lines(lines)
