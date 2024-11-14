@@ -12,7 +12,7 @@ def build_tram_stops(jsonobject):
             #tramstops = key, {'lat': value['position'][0], 'lon': value['position'][1]}
         return tstops
         
-print(build_tram_stops(jsonobject))
+#print(build_tram_stops(jsonobject))
             
 def build_tram_lines(lines):
     with open(lines) as file:
@@ -38,7 +38,7 @@ def build_tram_lines(lines):
         if current_line is not None:
             tram_lines[current_line] = stops
 
-        print(tram_lines)
+        return tram_lines
 
 
-#build_tram_lines(lines)
+#print(build_tram_lines(lines))
